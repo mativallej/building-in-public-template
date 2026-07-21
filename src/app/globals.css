@@ -1,0 +1,238 @@
+@import "tailwindcss";
+
+/* ============================================================
+   "Plain" design system — a quiet, editorial, flat system.
+   All personalization flows through --bip-accent (see layout.tsx),
+   which is injected from site.config.ts at build time.
+   ============================================================ */
+
+:root {
+  /* True-neutral scale (zinc-based, no color cast) */
+  --bip-bg: #ffffff; /* page canvas — white, not grey */
+  --bip-bg-subtle: #fafafa; /* code/terminal blocks, kbd */
+  --bip-fg: #18181b; /* primary text */
+  --bip-fg-muted: #71717a; /* secondary text */
+  --bip-fg-faint: #a1a1aa; /* tertiary/meta text */
+  --bip-border: #e4e4e7; /* all rules and borders, 1px solid */
+
+  /* Accent — USED in the UI (links, focus, active filters, solid button).
+     Overridden per-site from site.config in layout.tsx. */
+  --bip-accent: #2563eb;
+  --bip-accent-fg: #ffffff;
+
+  /* Status */
+  --bip-ok: #16a34a;
+  --bip-fail: #dc2626;
+
+  /* Radius — round numbers, small */
+  --bip-radius-sm: 4px;
+  --bip-radius: 8px;
+  --bip-radius-lg: 12px;
+
+  /* One shadow, overlays only */
+  --bip-shadow-overlay: 0 16px 48px rgb(0 0 0 / 0.12);
+}
+
+/* Map the raw tokens onto Tailwind's theme so utilities like
+   `text-fg-muted`, `bg-accent`, `border-border`, `rounded-lg`,
+   `font-mono` resolve to the Plain system. */
+@theme inline {
+  --color-bg: var(--bip-bg);
+  --color-bg-subtle: var(--bip-bg-subtle);
+  --color-fg: var(--bip-fg);
+  --color-fg-muted: var(--bip-fg-muted);
+  --color-fg-faint: var(--bip-fg-faint);
+  --color-border: var(--bip-border);
+  --color-accent: var(--bip-accent);
+  --color-accent-fg: var(--bip-accent-fg);
+  --color-ok: var(--bip-ok);
+  --color-fail: var(--bip-fail);
+
+  --radius-sm: var(--bip-radius-sm);
+  --radius: var(--bip-radius);
+  --radius-lg: var(--bip-radius-lg);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* ---------- Base ---------- */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Smooth scroll, but only when the user hasn't asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background: var(--bip-bg);
+  color: var(--bip-fg);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Consistent, accent-tinted focus ring for keyboard users. */
+:focus-visible {
+  outline: 2px solid var(--bip-accent);
+  outline-offset: 2px;
+  border-radius: var(--bip-radius-sm);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--bip-accent) 18%, transparent);
+}
+
+/* ============================================================
+   .prose-bip — article body styles, in the Plain system.
+   Flat: rules and whitespace, no cards, no shadows.
+   ============================================================ */
+
+.prose-bip {
+  color: var(--bip-fg);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.prose-bip > * + * {
+  margin-top: 1.25em;
+}
+
+.prose-bip h2,
+.prose-bip h3 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.prose-bip h2 {
+  font-size: 1.5rem;
+}
+
+.prose-bip h3 {
+  font-size: 1.25rem;
+}
+
+.prose-bip a {
+  color: var(--bip-accent);
+  text-underline-offset: 3px;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: color-mix(in srgb, var(--bip-accent) 40%, transparent);
+}
+
+.prose-bip a:hover {
+  text-decoration-color: var(--bip-accent);
+}
+
+.prose-bip strong {
+  font-weight: 600;
+}
+
+.prose-bip ul,
+.prose-bip ol {
+  padding-left: 1.4em;
+}
+
+.prose-bip ul {
+  list-style: disc;
+}
+
+.prose-bip ol {
+  list-style: decimal;
+}
+
+.prose-bip li + li {
+  margin-top: 0.4em;
+}
+
+.prose-bip li::marker {
+  color: var(--bip-fg-faint);
+}
+
+.prose-bip blockquote {
+  border-left: 2px solid var(--bip-border);
+  padding-left: 1rem;
+  color: var(--bip-fg-muted);
+  font-style: normal;
+}
+
+.prose-bip code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875em;
+  background: var(--bip-bg-subtle);
+  border: 1px solid var(--bip-border);
+  border-radius: var(--bip-radius-sm);
+  padding: 0.1em 0.35em;
+}
+
+.prose-bip pre {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+  background: var(--bip-bg-subtle);
+  border: 1px solid var(--bip-border);
+  border-radius: var(--bip-radius-lg);
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+.prose-bip pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+}
+
+.prose-bip hr {
+  border: 0;
+  border-top: 1px solid var(--bip-border);
+  margin: 2.5em 0;
+}
+
+.prose-bip img {
+  border-radius: var(--bip-radius-lg);
+  border: 1px solid var(--bip-border);
+  max-width: 100%;
+  height: auto;
+}
+
+/* Tables: borderless GFM stat tables in the flat doctrine.
+   Wrapped in .prose-bip-table-scroll (see lib/articles.ts). */
+.prose-bip-table-scroll {
+  overflow-x: auto;
+  margin-top: 1.25em;
+}
+
+.prose-bip table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.prose-bip th,
+.prose-bip td {
+  text-align: left;
+  padding: 0.6em 1em 0.6em 0;
+  border-bottom: 1px solid var(--bip-border);
+  white-space: nowrap;
+}
+
+.prose-bip thead th {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--bip-fg-muted);
+}
+
+.prose-bip tbody tr:last-child td {
+  border-bottom: 0;
+}
