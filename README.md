@@ -16,8 +16,8 @@ Three steps, under fifteen minutes, no component edits.
 
 1. **Clone it.** Use this template on GitHub, or:
    ```bash
-   npx create-next-app@latest my-page -e https://github.com/matiasvallejosdev/building-in-public-template
-   # or just: git clone https://github.com/matiasvallejosdev/building-in-public-template
+   npx create-next-app@latest my-page -e https://github.com/mativallej/building-in-public-template
+   # or just: git clone https://github.com/mativallej/building-in-public-template
    cd my-page && npm install
    ```
 2. **Make it yours.** Run the setup skill in Claude Code:

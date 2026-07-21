@@ -3,7 +3,7 @@ import { SocialIcon } from "@/components/SocialIcons";
 
 /** The template's home and author — used by the (removable) attribution line. */
 const TEMPLATE_REPO =
-  "https://github.com/matiasvallejosdev/building-in-public-template";
+  "https://github.com/mativallej/building-in-public-template";
 const TEMPLATE_AUTHOR = "https://matiasvallejos.com";
 
 /** Socials + license note + the default-on, removable attribution credit. */
