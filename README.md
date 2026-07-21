@@ -1,6 +1,6 @@
 # Building in Public Template
 
-[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/mativallejosdev?style=social)](https://x.com/mativallejosdev)
+[![X (formerly Twitter) Follow](https://img.shields.io/twitter/follow/mativallej_?style=social)](https://x.com/mativallej_)
 [![GitHub top language](https://img.shields.io/github/languages/top/mativallej/building-in-public-template?color=1081c2)](https://github.com/mativallej/building-in-public-template/search?l=typescript)
 ![License](https://img.shields.io/github/license/mativallej/building-in-public-template?label=license&logo=github&color=f80&logoColor=fff)
 ![Forks](https://img.shields.io/github/forks/mativallej/building-in-public-template.svg)
@@ -217,7 +217,7 @@ Contributions are welcome.
 Built by Matías Vallejos.
 
 - Website: [matiasvallejos.com](https://matiasvallejos.com)
-- X: [@mativallejosdev](https://x.com/mativallejosdev)
+- X: [@mativallej_](https://x.com/mativallej_)
 - GitHub: [@mativallej](https://github.com/mativallej)
 
 ## License
